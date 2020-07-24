@@ -2,10 +2,14 @@
 
 import sys
 
-def making_change(amount, denominations):
-  # Your code here
 
-  pass
+def making_change(amount, denominations):
+    ways = [0] * (amount + 1)
+    ways[0] = 1
+    for coin in denominations:
+        for i in range(coin, amount + 1):
+            ways[i] += ways[i - coin]
+    return ways[amount]
 
 
 if __name__ == "__main__":
